@@ -30,6 +30,13 @@ class MongoService {
       .updateOne({ _id: ObjectId(cardId) }, { $set : { owner, brand, number, expiration, amount } })
   }
 
+  async getCards(cardId, query) {
+    const db = await this.connect()
+    return db
+      .collection('cards')
+      .find().toArray()
+  }
+
 }
 
 module.exports = MongoService

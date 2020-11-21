@@ -1,13 +1,13 @@
 const express = require('express')
 const MongoService = require('../services/mongoService')
+const { success, error } = require('../helpers/response')
 const router = express.Router()
 
 router.get('/', async(req, res) => { 
     const mongo = new MongoService()
-    const db = await mongo.connect();
-    const collection = db.collection("cards");
-    const result = await collection.find().toArray();
-    res.send(result)
+    mongo.getCards()
+    .then(result => success(req, res, result))
+    .catch(err => error(req, res, err))
 })
 
 module.exports = router
