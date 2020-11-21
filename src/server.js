@@ -22,7 +22,7 @@ server.use('/post/cards', CardsPostController)
 server.use('/delete/cards/:cardId', CardsDeleteController)
 
 // Edita una tarjeta de la coleccion
-server.use('/put/cards/:cardId', CardsPutController)
+server.use('/', CardsPutController)
 
 server.listen(3000, () => {
   console.log('Server running on http://localhost:3000')
