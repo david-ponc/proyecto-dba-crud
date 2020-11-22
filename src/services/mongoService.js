@@ -41,7 +41,7 @@ class MongoService {
     const db = await this.connect()
     return db
       .collection('cards')
-      .insertOne({ $set : { owner: "David", number: 5566555644458899, brand: "American Express", expired: 2023, amount: 25000, type: "credito" } })
+      .insertOne({ $set : { owner: "Pedro", number: 5566555644458899, brand: "American Express", expired: 2023, amount: 25000, type: "credito" } })
   }
 }
 
