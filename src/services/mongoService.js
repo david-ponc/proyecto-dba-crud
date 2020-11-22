@@ -41,7 +41,7 @@ class MongoService {
         const db = await this.connect()
         return db
             .collection('cards')
-            .findOne({ _id: cardId })
+            .findOne({ _id: ObjectId(cardId) })
     }
 
 
