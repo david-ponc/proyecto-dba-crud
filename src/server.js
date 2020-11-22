@@ -19,7 +19,7 @@ server.use('/get/cards/:cardId', CardGetController)
 server.use('/post/cards', CardsPostController)
 
 // Elimina una tarjeta con el cardId proporcionado
-server.use('/delete/cards/:cardId', CardsDeleteController)
+server.use('/delete/cards/', CardsDeleteController)
 
 // Edita una tarjeta de la coleccion
 server.use('/', CardsPutController)

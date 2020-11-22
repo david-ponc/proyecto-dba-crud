@@ -17,6 +17,27 @@ class MongoService {
     })
   }
 
+  deleteCard(id){
+    const id_int = parseInt(id,10) 
+    return this.connect()
+    .then(function (db) {
+      db.collection('cards').findOne({number:id_int})
+      .then(function (res){
+        if(res){
+          return db.collection('cards').deleteOne({number:id_int})
+
+        }else{
+            throw new Error()
+          }
+      })
+      .catch(function (error){
+        return error
+      })
+    })
+    .catch(function (error){
+      return error
+    })
+  }
   
   close() {
     this.client.close()
