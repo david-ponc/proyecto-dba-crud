@@ -35,7 +35,16 @@ class MongoService {
     return db
       .collection('cards')
       .find().toArray()
-  }
+    }
+
+    async getCard(cardId,query) {
+        const db = await this.connect()
+        return db
+            .collection('cards')
+            .findOne(cardId)
+    }
+
+
 
 }
 
