@@ -35,17 +35,14 @@ class MongoService {
     return db
       .collection('cards')
       .find().toArray()
-    }
-
-    async getCard(cardId,query) {
-        const db = await this.connect()
-        return db
-            .collection('cards')
-            .findOne(cardId)
-    }
-
-
-
+  }
+  async insertCard(cardId, query) {
+    const { owner, brand, number, expiration, amount } = query
+    const db = await this.connect()
+    return db
+      .collection('cards')
+      .insertOne({ _id: ObjectId(cardId) }, { $set : { owner, brand, number, expiration, amount } })
+  }
 }
 
 module.exports = MongoService
