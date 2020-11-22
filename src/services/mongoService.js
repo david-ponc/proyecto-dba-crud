@@ -37,11 +37,11 @@ class MongoService {
       .find().toArray()
     }
 
-    async getCard(cardId,query) {
+    async getCard(cardId, query) {
         const db = await this.connect()
         return db
             .collection('cards')
-            .findOne(cardId)
+            .findOne({ _id: cardId })
     }
 
 
