@@ -36,12 +36,12 @@ class MongoService {
       .collection('cards')
       .find().toArray()
   }
-  async insertCard(cardId, query) {
-    const { owner, brand, number, expiration, amount } = query
+  async insertCard(query) {
+    const { owner, number, brand, expired, amount, type } = query
     const db = await this.connect()
     return db
       .collection('cards')
-      .insertOne({ _id: ObjectId(cardId) }, { $set : { owner, brand, number, expiration, amount } })
+      .insertOne({ $set : { owner, number, brand, expired, amount, type } })
   }
 }
 
