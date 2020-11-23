@@ -10,19 +10,19 @@ const server = express()
 server.use(express.json())
 
 // Devuelte todas las tarjetas de la coleccion
-server.use('/get/cards', CardsGetController)
+server.use('/api/v1', CardsGetController)
 
 // Devuelte la tarjeta con el cardId proporcionado
-server.use('/get/cards/:cardId', CardGetController)
+server.use('/api/v1', CardGetController)
 
 // Ingresa un nuevo documento (card) a la coleccion
-server.use('/post/cards', CardsPostController)
+server.use('/api/v1', CardsPostController)
 
 // Elimina una tarjeta con el cardId proporcionado
-server.use('/delete/cards/', CardsDeleteController)
+server.use('/api/v1', CardsDeleteController)
 
 // Edita una tarjeta de la coleccion
-server.use('/', CardsPutController)
+server.use('/api/v1', CardsPutController)
 
 const s = server.listen(process.env.PORT, () => {
   console.log(`Server running on port: ${s.address().port}`)

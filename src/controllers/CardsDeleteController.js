@@ -3,7 +3,7 @@ const MongoService = require('../services/mongoService')
 const router = express.Router()
 const {success, error} = require('../helpers/response')
 
-router.delete('/:cardId', (req, res) => { 
+router.delete('/cards/:cardId', (req, res) => { 
     const mongo = new MongoService()
     const id = req.params.cardId
     mongo.deleteCard(id)

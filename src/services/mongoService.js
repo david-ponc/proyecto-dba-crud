@@ -57,6 +57,14 @@ class MongoService {
       .collection('cards')
       .find().toArray()
   }
+
+  async getCard(cardId) {
+    const db = await this.connect()
+    return db
+        .collection('cards')
+        .findOne({ _id: ObjectId(cardId) })
+  }
+
   async insertCard(query) {
     const { owner, number, brand, expiration, amount, type } = query
     const db = await this.connect()
