@@ -1,4 +1,4 @@
-const { MongoClient, ObjectId } = require('mongodb')
+const { MongoClient } = require('mongodb')
 
 const URI_MONGO = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}/${process.env.DB_NAME}?retryWrites=true&w=majority`
 
@@ -38,17 +38,17 @@ class MongoService {
       return error
     })
   }
-  
+
   close() {
     this.client.close()
   }
 
   async updateCard(cardId, query) {
-    const { owner, brand, number, expiration, amount } = query
+    const { owner, brand, number, expiration, amount, type } = query
     const db = await this.connect()
     return db
       .collection('cards')
-      .updateOne({ _id: ObjectId(cardId) }, { $set : { owner, brand, number, expiration, amount } })
+      .updateOne({ number: cardId }, { $set : { owner, brand, number, expiration, amount, type } })
   }
 
   async getCards() {
@@ -62,7 +62,7 @@ class MongoService {
     const db = await this.connect()
     return db
         .collection('cards')
-        .findOne({ _id: ObjectId(cardId) })
+        .findOne({ number: cardId })
   }
 
   async insertCard(query) {
