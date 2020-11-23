@@ -24,6 +24,6 @@ server.use('/delete/cards/', CardsDeleteController)
 // Edita una tarjeta de la coleccion
 server.use('/', CardsPutController)
 
-server.listen(process.env.PORT, () => {
-  console.log(`Server running on port: ${server.address().port}`)
+const s = server.listen(process.env.PORT, () => {
+  console.log(`Server running on port: ${s.address().port}`)
 })
