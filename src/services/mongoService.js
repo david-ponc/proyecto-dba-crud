@@ -44,11 +44,12 @@ class MongoService {
   }
 
   async updateCard(cardId, query) {
+    const newCardId = parseInt(cardId,10)
     const { owner, brand, number, expiration, amount, type } = query
     const db = await this.connect()
     return db
       .collection('cards')
-      .updateOne({ number: cardId }, { $set : { owner, brand, number, expiration, amount, type } })
+      .updateOne({ number: newCardId }, { $set : { owner, brand, number, expiration, amount, type } })
   }
 
   async getCards() {
