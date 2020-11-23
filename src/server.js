@@ -1,4 +1,5 @@
 const express = require('express')
+const cors = require('cors')
 require('dotenv').config()
 const CardsGetController = require('./controllers/CardsGetController')
 const CardGetController = require('./controllers/CardGetController')
@@ -8,6 +9,7 @@ const CardsPutController = require('./controllers/CardsPutController')
 const server = express()
 
 server.use(express.json())
+server.use(cors())
 
 // Devuelte todas las tarjetas de la coleccion
 server.use('/api/v1', CardsGetController)
