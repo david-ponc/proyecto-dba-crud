@@ -51,18 +51,18 @@ class MongoService {
       .updateOne({ _id: ObjectId(cardId) }, { $set : { owner, brand, number, expiration, amount } })
   }
 
-  async getCards(cardId, query) {
+  async getCards() {
     const db = await this.connect()
     return db
       .collection('cards')
       .find().toArray()
   }
   async insertCard(query) {
-    const { owner, number, brand, expired, amount, type } = query
+    const { owner, number, brand, expiration, amount, type } = query
     const db = await this.connect()
     return db
       .collection('cards')
-      .insertOne({ $set : { owner: "Pedro Hernandez", number: 5566555644458899, brand: "American Express", expired: 2023, amount: 25000, type: "credito" } })
+      .insertOne({ owner, number, brand, expiration, amount, type })
   }
 }
 
