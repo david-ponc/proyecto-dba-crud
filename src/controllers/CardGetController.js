@@ -8,7 +8,7 @@ router.get('/cards/:cardId', async (req, res) => {
     const { cardId } = req.params
     const mongo = new MongoService()
     mongo.getCard(cardId)
-    .then(result => success(req, res, result))
+    .then(result => { console.log(result); success(req, res, result)})
     .catch(err => error(req, res, err))
 })
 

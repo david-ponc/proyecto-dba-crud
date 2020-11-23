@@ -59,10 +59,11 @@ class MongoService {
   }
 
   async getCard(cardId) {
+    const newCardId = parseInt(cardId,10)
     const db = await this.connect()
     return db
         .collection('cards')
-        .findOne({ number: cardId })
+        .findOne({ number: newCardId })
   }
 
   async insertCard(query) {
